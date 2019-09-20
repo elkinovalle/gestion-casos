@@ -26,7 +26,7 @@ module.exports = function setupMetricModel (config) {
       type: Sequelize.TEXT,
     },
     contexto: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.TEXT,
     },
     correcta: {
       type: Sequelize.TEXT,

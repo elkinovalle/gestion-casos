@@ -4,6 +4,7 @@ const { db:config } = require('@chons-gym/config')
 
 //contraladores
 const setupUser = require('./lib/users')
+const setupPregunta = require('./lib/preguntas')
 
 
 const setupDatabase = require('./lib/db')
@@ -36,12 +37,13 @@ module.exports = async function () {
   }
  
   const User = setupUser(UserModel)
+  const Pregunta = setupPregunta(PreguntaModel)
   
   return {
     async setup() {
       await sequelize.sync({ force: true })
     },
     User,
-  
+    Pregunta
   }
 }
