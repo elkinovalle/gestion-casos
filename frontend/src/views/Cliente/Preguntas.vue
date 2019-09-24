@@ -48,8 +48,8 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs12 md12>
-          <v-card>
-            <v-card-title>
+          <v-card color="blue darken-4">
+            <v-card-title color="blue darken-4">
               <v-toolbar-title class="titulo2">Preguntas</v-toolbar-title>
               <v-divider class="mx-2" inset vertical></v-divider>
               <v-spacer></v-spacer>
@@ -115,7 +115,7 @@ export default {
       "PRESUPUESTO",
       "SERV. AL CLIENTE",
       "CONTAB. Y FINANZAS",
-      "PROYECTOS"
+      "PROYECTOS",
     ],
     correcta: '',
     correctaIt: [
@@ -172,7 +172,7 @@ export default {
   },
   methods: {
     async getPreguntas() {
-      const { data: plans } = await api.get("/pregunta");
+      const { data: preguntas } = await api.get("/pregunta");
       this.$store.commit("SET_PREGUNTAS", preguntas);
     },
     resetForm() {
@@ -180,7 +180,6 @@ export default {
     },
     async save() {
       if (this.btnText === "Agregar Pregunta") {
-        
         const { data: pregunta } = await api.post("/pregunta", {
           preguntaNew: {
             Tema: this.editedItem.Tema,
@@ -278,9 +277,7 @@ export default {
 };
 </script>
 <style lang="stylus" scoped>
-div.v-card__title {
-  background-color: blue;
-}
+
 
 .container.fill-height {
   background-color: white;

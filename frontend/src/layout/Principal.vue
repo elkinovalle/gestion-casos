@@ -7,8 +7,8 @@
     <v-toolbar-title class="font-weight-black font-italic white--text display-1">Gestion Casos</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat class="white--text" to="/Cliente/pregunta">pregunta</v-btn>
-     
+      <v-btn flat class="white--text"  to="/Cliente/pregunta">pregunta</v-btn>
+      <v-btn flat class="white--text"  to="/Cliente/modulo-casos">casos</v-btn>
        <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
@@ -163,7 +163,11 @@
 </v-app>
 </template>
 <script>
+import api from "@/plugins/service";
 export default {
+  created(){
+
+  },
   methods: {
     clickMenu (value) {
       this.$router.push(value.link)

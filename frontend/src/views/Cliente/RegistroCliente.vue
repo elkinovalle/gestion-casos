@@ -15,8 +15,7 @@
       </v-snackbar>
       <v-form ref="form" @submit.prevent="submit">
         <v-container grid-list-xl fluid>
-          <v-layout wrap align-center
-          justify-center>
+          <v-layout wrap align-center justify-center>
             <v-flex d-flex xs12 sm12 md12 class="center">
               <h1 class="text-xs-center black--text headline font-italic">
                 CREA TU
@@ -42,10 +41,14 @@
                     </v-layout>
                     <v-layout row>
                       <v-flex xs6 order-lg2 class="transparent text-xs-center">
-                        <v-text-field v-model="cedula" color="blue darken-4" label="Numero de Documento"></v-text-field>
+                        <v-text-field
+                          v-model="cedula"
+                          color="blue darken-4"
+                          label="Numero de Documento"
+                        ></v-text-field>
                       </v-flex>
                       <v-flex xs6 order-lg2>
-                         <v-combobox v-model="perfil" :items="items" label="Perfil"></v-combobox>
+                        <v-combobox v-model="perfil" :items="items" label="Perfil"></v-combobox>
                       </v-flex>
                     </v-layout>
                     <v-text-field
@@ -203,42 +206,39 @@
   </div>
 </template>
 <script>
-import { validationMixin } from 'vuelidate'
+import { validationMixin } from "vuelidate";
 import {
   required,
   sameAs,
   minLength,
   email,
   requiredIf
-} from 'vuelidate/lib/validators'
+} from "vuelidate/lib/validators";
 
-import api from '@/plugins/service'
+import api from "@/plugins/service";
 export default {
-  data () {
+  data() {
     return {
-      email: '',
-      password: '',
-      nombre: '',
-      apellidos: '',
-      cedula: '',
-      perfil: '',
-      items: [
-        'Aprendiz',
-        'Instructor'
-      ],
-      repeatPassword: '',
+      email: "",
+      password: "",
+      nombre: "",
+      apellidos: "",
+      cedula: "",
+      perfil: "",
+      items: ["Aprendiz", "Instructor"],
+      repeatPassword: "",
       isLoading: false,
       allowSpaces: false,
       dialog: false,
       dialogEmail: false,
       show1: false,
       show2: false,
-      gender: ['M', 'F'],
+      gender: ["M", "F"],
       conditions: false,
-      content: 'Bienvenido a chon´s-Gym',
+      content: "Bienvenido a chon´s-Gym",
       snackbar: false,
       terminos: false
-    }
+    };
   },
   mixins: [validationMixin],
   validations: {
@@ -247,66 +247,66 @@ export default {
       minLength: minLength(8)
     },
     repeatPassword: {
-      sameAsPassword: sameAs('password')
+      sameAsPassword: sameAs("password")
     },
     email: {
       required,
       email
     },
     terminos: {
-      checked (val) {
-        return val
+      checked(val) {
+        return val;
       }
     }
   },
-  created () {
-    this.getUsers()
+  created() {
+    this.getUsers();
   },
   computed: {
-    checkboxErrors () {
-      const errors = []
-      if (!this.$v.terminos.$dirty) return errors
+    checkboxErrors() {
+      const errors = [];
+      if (!this.$v.terminos.$dirty) return errors;
       !this.$v.terminos.checked &&
-        errors.push('debes aceptar terminos y condiciones')
-      return errors
+        errors.push("debes aceptar terminos y condiciones");
+      return errors;
     },
-    passErrors () {
-      const errors = []
-      if (!this.$v.password.$dirty) return errors
+    passErrors() {
+      const errors = [];
+      if (!this.$v.password.$dirty) return errors;
       if (!this.$v.password.minLength) {
-        errors.push('Contraseña debe tener mínimo 8 caracteres')
-        return errors
+        errors.push("Contraseña debe tener mínimo 8 caracteres");
+        return errors;
       }
       if (!this.$v.password.required) {
-        errors.push('Contraseña requerida')
-        return errors
+        errors.push("Contraseña requerida");
+        return errors;
       }
-      return errors
+      return errors;
     },
-    matchPass () {
-      const errors = []
-      if (!this.$v.repeatPassword.$dirty) return errors
+    matchPass() {
+      const errors = [];
+      if (!this.$v.repeatPassword.$dirty) return errors;
       !this.$v.repeatPassword.sameAsPassword &&
-        errors.push('Contraseñas no coinciden')
-      return errors
+        errors.push("Contraseñas no coinciden");
+      return errors;
     },
-    emailError () {
-      const errors = []
-      if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push('E-mail invalido')
-      !this.$v.email.required && errors.push('E-mail es requerido')
-      return errors
+    emailError() {
+      const errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.email && errors.push("E-mail invalido");
+      !this.$v.email.required && errors.push("E-mail es requerido");
+      return errors;
     }
   },
   methods: {
-    async getUsers () {
-      const res = await api.get('/user')
+    async getUsers() {
+      const res = await api.get("/user");
     },
-    resetForm () {
-      this.$refs.form.reset()
+    resetForm() {
+      this.$refs.form.reset();
     },
-    async submit () {
-      const res = await api.post('/user', {
+    async submit() {
+      const res = await api.post("/user", {
         userNew: {
           nombre: this.nombre,
           apellido: this.apellidos,
@@ -315,12 +315,12 @@ export default {
           email: this.email,
           password: this.password
         }
-      })
-      this.snackbar = true
-      this.resetForm()
+      });
+      this.snackbar = true;
+      this.resetForm();
     }
   }
-}
+};
 </script>
 <style lang="stylus" scoped>
 .contenedor {
