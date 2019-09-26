@@ -241,7 +241,7 @@ export default {
     async deleteItem(item) {
       const sw = await Swal.fire({
         title: "Estas seguro?",
-        text: `Eliminaras la pregunta ${item.nombre}`,
+        text: `Eliminaras la pregunta ${item.Pregunta}`,
         type: "question",
         showCancelButton: true,
         cancelButtonColor: "#d33",

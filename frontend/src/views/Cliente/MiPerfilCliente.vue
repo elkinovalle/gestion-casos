@@ -19,7 +19,7 @@
               <v-layout justify-center>
     <v-flex xs12 sm6 md12>
       <p></p>
-      <img sm11 class="push" src="../../assets/perfilGym.jpg" alt="">
+      <!-- <img sm11 class="push" src="../../assets/perfilGym.jpg" alt=""> -->
         <p></p>
     </v-flex>
   </v-layout>
@@ -33,7 +33,7 @@
         <h2 class="text-xs black--text body-1"><strong>LUN-JUE: 3AM a 11PM</strong></h2>
         <h3 class="text-xs black--text body-1"><strong>VIE: 3AM a 10PM</strong></h3>
         <p class="text-xs black--text body-1"><strong>SAB-DOM-FEST: 6AM a 6PM</strong></p>
-  <img class="imagen_logo" src="../../assets/Logo-gym.png" alt="">
+  <!-- <img class="imagen_logo" src="../../assets/Logo-gym.png" alt=""> -->
   <p></p>
         <h2 class="text-xs black--text body-1"><strong>Dirección: Cra 9 #28-56</strong></h2>
         <h3 class="text-xs black--text body-1"><strong>Télefono: 31857420</strong></h3>

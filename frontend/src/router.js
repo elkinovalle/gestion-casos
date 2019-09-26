@@ -5,6 +5,8 @@ import RegistroCliente from './views/Cliente/RegistroCliente.vue'
 import MiPerfilCliente from './views/Cliente/MiPerfilCliente.vue'
 import EditarPerfilCliente from './views/Cliente/EditarPerfilCliente.vue'
 import Pregunta from './views/Cliente/Preguntas.vue'
+import ModuloCasos from './views/Cliente/ModuloCasos.vue'
+import Mision from './views/Cliente/Mision.vue'
 
 Vue.use(Router)
 
@@ -37,6 +39,17 @@ export default new Router({
       name: 'pregunta',
       component: Pregunta
     },
+    {
+      path: '/Cliente/Modulo-Casos',
+      name: 'Modulo-Casos',
+      component: ModuloCasos
+    },
+    {
+      path: '/Cliente/Mision',
+      name: 'Mision',
+      component: Mision
+    },
+    
     
   ]
 })

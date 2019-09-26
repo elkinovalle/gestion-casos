@@ -1,29 +1,28 @@
 <template>
   <div>
-    <v-container>
-      <v-layout>
-        <v-flex xs12 sm6 md3>
-          <img src="../../assets/Slide1_Pic1_636256342167862599.png" class="imagen" alt />
-        </v-flex>
-        <v-flex xs12 sm6 md6 lg>
-          <component is="caso1"></component>
-          <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn>
-        </v-flex>
-      </v-layout>
-    </v-container>
+    <v-card>
+      <v-card-title class="display-1">¿{{this.preguntas[0].Pregunta}}?</v-card-title>
+      <v-radio-group class="group" v-model="Rcorrecta">
+        <v-radio :label="`${this.preguntas[0].A}`" color="blue" value="A"></v-radio>
+        <v-radio :label="`${this.preguntas[0].B}`" color="blue" value="B"></v-radio>
+        <v-radio :label="`${this.preguntas[0].C}`" color="blue" value="C"></v-radio>
+      </v-radio-group>
+      <v-card-actions>
+        <br>
+        <br>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
 <script>
 import api from "@/plugins/service";
-import caso2 from "../../componets/caso2";
-import caso1 from "../../componets/caso1";
 export default {
   created() {
     this.getPreguntas();
   },
   data: () => ({
-    preguntas: [],
+    preguntas: []
   }),
   methods: {
     async getPreguntas() {
@@ -43,17 +42,7 @@ export default {
       return (rand = this.preguntas[
         Math.floor(Math.random() * this.preguntas.length)
       ]);
-    },
-    contador(){
-     var a=0;
-     a++
-     console.log(a);
-     
     }
-  },
-  components: {
-    caso1,
-    caso2
   }
 };
 </script>
@@ -63,8 +52,6 @@ export default {
 }
 .text {
   color: white;
-  margin-top: -100px;
 }
-.imagen {
-}
+
 </style>

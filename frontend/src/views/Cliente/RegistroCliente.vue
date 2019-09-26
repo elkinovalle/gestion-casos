@@ -26,7 +26,7 @@
             <v-flex d-flex xs12 sm12 md8 center>
               <v-card class="elevation-12">
                 <v-toolbar color="blue darken-4" height="150">
-                  <img src="../../assets/lofo-fondo-blanco.png" class="imagen" alt />
+                  <!-- <img src="../../assets/lofo-fondo-blanco.png" class="imagen" alt /> -->
                   <v-toolbar-title class="font-weight-medium white--text display-1">Gestion de Casos</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text class="contenedor white">
