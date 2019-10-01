@@ -4,9 +4,12 @@ import Login from './views/Cliente/Login.vue'
 import RegistroCliente from './views/Cliente/RegistroCliente.vue'
 import MiPerfilCliente from './views/Cliente/MiPerfilCliente.vue'
 import EditarPerfilCliente from './views/Cliente/EditarPerfilCliente.vue'
-import Pregunta from './views/Cliente/Preguntas.vue'
+import PreguntasEmpresas from './views/Administrador/PreguntasEmpresas.vue'
+import Pregunta from './views/Administrador/Preguntas.vue'
 import ModuloCasos from './views/Cliente/ModuloCasos.vue'
 import Mision from './views/Cliente/Mision.vue'
+import Inicio from './views/Cliente/inicio.vue'
+import OfertasEmpresas from './views/Cliente/OfertasEmpresas.vue'
 
 Vue.use(Router)
 
@@ -35,9 +38,14 @@ export default new Router({
       component: EditarPerfilCliente
     },
     {
-      path: '/Cliente/pregunta',
+      path: '/Administrador/pregunta',
       name: 'pregunta',
       component: Pregunta
+    },
+    {
+      path: '/Administrador/preguntas-empresas',
+      name: 'preguntas-empresas',
+      component: PreguntasEmpresas
     },
     {
       path: '/Cliente/Modulo-Casos',
@@ -49,8 +57,16 @@ export default new Router({
       name: 'Mision',
       component: Mision
     },
-    
-    
+    {
+      path: '/Cliente/Inicio',
+      name: 'Inicio',
+      component: Inicio
+    },
+    {
+      path: '/Cliente/Ofertas-Empresas',
+      name: 'Ofertas-Empresas',
+      component: OfertasEmpresas
+    },
   ]
 })
 

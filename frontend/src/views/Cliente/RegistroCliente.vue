@@ -132,7 +132,7 @@
                           flat
                           @click="dialogEmail = false"
                           class="title"
-                          to="/planes-cliente"
+                          to="Cliente/inicio"
                         >Omitir</v-btn>
                         <v-btn
                           color="blue darken-4"
@@ -261,6 +261,7 @@ export default {
   },
   created() {
     this.getUsers();
+    this.$store.commit('SET_LAYOUT', 'principal-layout')
   },
   computed: {
     checkboxErrors() {

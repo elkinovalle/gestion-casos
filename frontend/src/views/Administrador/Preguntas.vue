@@ -106,6 +106,7 @@ import { mapState } from "vuex";
 import Swal from "sweetalert2";
 export default {
   created() {
+    this.$store.commit('SET_LAYOUT', 'admin-layout')
     this.getPreguntas();
   },
   data: () => ({

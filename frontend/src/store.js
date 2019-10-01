@@ -10,8 +10,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     layout: 'principal-layout',
+    login: 'login',
     users: [],
     preguntas: [],
+    preguntasReconocimiento:[]
   },
   mutations: {
     SET_LAYOUT (state, newLayout) {
@@ -22,6 +24,9 @@ export default new Vuex.Store({
     },
     SET_PREGUNTAS (state, newPregunta) {
       state.preguntas = newPregunta
+    },
+    SET_PREGUNTAS_RECONOCIMIENTO (state, newPreguntaReconocimiento) {
+      state.preguntasReconocimiento = newPreguntaReconocimiento
     },
   },
   actions: {

@@ -6,13 +6,12 @@
         <v-layout wrap align-center justify-center>
           <v-flex xs12 sm8 md8>
               <v-card class="elevation-12">
-                <v-toolbar color="blue darken-4" height="150">
-                    <!-- <img src="../../assets/lofo-fondo-blanco.png" alt="" class="symbol"> -->
-                <v-toolbar-title class="font-weight-medium white--text display-1">Gestion de Casos</v-toolbar-title>
+                <v-toolbar color="blue darken-1" height="150">
+                    <img src="../../assets/logo seep hd.png" alt="" class="symbol">
                 </v-toolbar>
               <v-card-text class="contenedor white">
                 <v-form class="black--text">
-                  <v-text-field name="user" label="Usuario" type="text" v-model="email"></v-text-field>
+                  <v-text-field name="user" label="Usuario" type="text" :error-messages="matchPass" v-model="email"></v-text-field>
                   <v-text-field id="password" name="password" v-model="password" label="Contraseña"  :type="show1 ? 'text' : 'password'" :append-icon="show1 ? 'visibility' : 'visibility_off'"
              @click:append="show1 = !show1"></v-text-field>
                 </v-form>
@@ -30,7 +29,7 @@
               </v-card>
               <br>
               <v-card class="carta" flat>
-                 <v-flex xs3 order-lg2>
+                 <v-flex xs12 order-lg2>
                   <v-dialog v-model="dialogPassword" persistent max-width="600px">
         <template v-slot:activator="{ on }">
           <v-card flat class="carta1">
@@ -96,10 +95,26 @@ export default {
     clickPush (value) {
       this.$router.push(value)
     },
+    passErrors() {
+      const errors = [];
+      if (!this.$v.user.$dirty) return errors;
+      if (!this.$v.password.minLength) {
+        errors.push("Contraseña debe tener mínimo 8 caracteres");
+        return errors;
+      }
+      if (!this.$v.password.required) {
+        errors.push("Contraseña requerida");
+        return errors;
+      }
+      return errors;
+    },
     async singin () {
       const { data } = await api.post('/user/singin', { email: this.email, password: this.password })
       if (data.login) {
-        this.$router.push('/planes-cliente')
+        this.$router.push('/Cliente/inicio')
+      }
+      else{
+
       }
     }
   }
@@ -110,7 +125,7 @@ export default {
 img.symbol {
   margin-right 5px
   height 100px
-  width 100px !important
+  width 300px !important
 }
 div.found{
       // background-image url('../../assets/gym.jpg');

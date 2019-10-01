@@ -4,6 +4,8 @@
 
 <script>
 import PrincipalLayout from './layout/Principal.vue'
+import AdminLayout from './layout/Admin.vue'
+import Login from './views/Cliente/Login.vue'
 import { mapState } from 'vuex'
 export default {
   name: 'App',
@@ -14,7 +16,9 @@ export default {
   },
   computed: mapState(['layout']),
   components: {
-    PrincipalLayout
+    PrincipalLayout,
+    AdminLayout,
+    Login
   }
 }
 </script>

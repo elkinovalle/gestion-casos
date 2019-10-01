@@ -6,9 +6,9 @@
           <img src="../../assets/Slide1_Pic1_636256342167862599.png" class="imagen" alt />
         </v-flex>
         <v-flex xs12 sm6 md6 lg>
-          <component :is="`caso${this.cont}`"></component>
-          <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn>
-          <!-- <v-card>
+          <!-- <component is="caso1"></component>
+          <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn> -->
+          <v-card>
       <v-card-title class="display-1">¿{{this.preguntas[0].Pregunta}}?</v-card-title>
       <v-radio-group class="group" v-model="Rcorrecta">
         <v-radio :label="`${this.preguntas[0].A}`" color="blue" value="A"></v-radio>
@@ -16,9 +16,9 @@
         <v-radio :label="`${this.preguntas[0].C}`" color="blue" value="C"></v-radio>
       </v-radio-group>
       <v-card-actions>
-        <v-btn color="blue darken-4 "  @click="contador">Siguiente</v-btn>
+        <v-btn color="blue darken-4 " to="">Siguiente</v-btn>
       </v-card-actions>
-    </v-card> -->
+    </v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -27,8 +27,8 @@
 
 <script>
 import api from "@/plugins/service";
-import caso1 from "../../componets/caso2";
-import caso0 from "../../componets/caso1";
+import caso2 from "../../componets/caso2";
+import caso1 from "../../componets/caso1";
 export default {
   created() {
     this.getPreguntas();
@@ -36,9 +36,6 @@ export default {
   },
   data: () => ({
     preguntas: [],
-    caso0: caso0,
-    caso1: caso1,
-    cont: 0
   }),
   methods: {
     async getPreguntas() {
@@ -60,14 +57,15 @@ export default {
       ]);
     },
     contador(){
-     this.cont++;
-     console.log(this.cont);
+     var a=0;
+     a++
+     console.log(a);
      
     }
   },
   components: {
-    caso0,
-    caso1
+    caso1,
+    caso2
   }
 };
 </script>

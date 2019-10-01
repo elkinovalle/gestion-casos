@@ -3,6 +3,7 @@
 const { getLogger } = require('@chons-gym/utils')
 const user = require('./user')
 const pregunta = require('./pregunta')
+const preguntas_reconocimiento = require('./preguntas_reconocimiento')
 const log = getLogger(__dirname, __filename)
 // prueba
 module.exports = {
@@ -13,6 +14,8 @@ module.exports = {
   },
   user,
   pregunta,
+  preguntas_reconocimiento,
+  
   errorHandler (err, req, res, next) {
     if (err) {
       let code = err.code || 500
