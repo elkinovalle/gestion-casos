@@ -32,10 +32,10 @@
                 <v-card-text class="contenedor white">
                   <v-form class="black--text">
                     <v-layout row>
-                      <v-flex xs6 order-lg2 class="transparent text-xs-center">
+                      <v-flex xs12 sm6 order-lg2 class="transparent text-xs-center">
                         <v-text-field v-model="nombre" color="blue darken-4" label="Nombres"></v-text-field>
                       </v-flex>
-                      <v-flex xs6 order-lg2>
+                      <v-flex xs12 sm6 order-lg2>
                         <v-text-field v-model="apellidos" color="blue darken-4" label="Apellidos"></v-text-field>
                       </v-flex>
                     </v-layout>
@@ -45,6 +45,7 @@
                           v-model="cedula"
                           color="blue darken-4"
                           label="Numero de Documento"
+                          type="number" 
                         ></v-text-field>
                       </v-flex>
                       <v-flex xs6 order-lg2>
@@ -132,7 +133,7 @@
                           flat
                           @click="dialogEmail = false"
                           class="title"
-                          to="Cliente/inicio"
+                          to="/Cliente/inicio"
                         >Omitir</v-btn>
                         <v-btn
                           color="blue darken-4"
@@ -156,11 +157,11 @@
           <v-card-text>
             <span
               class="text-xs black--text subheading justify"
-            >La protección y el buen manejo de la información personal de sus afiliados son muy importantes para el Gimnasio Chon's Gym, por cuanto las mismas le permiten atender de mejor manera las necesidades que ellos tienen, así como cumplir con las obligaciones a su cargo. Es por ello que el Gimnasio Chon's Gym ha diseñado políticas y procedimientos que en conjunto con la presente autorización permiten hacer uso de sus datos personales conforme a la ley. Así, lo invitamos a leer cuidadosamente el siguiente texto, mediante el cual autoriza el tratamiento de su información personal.</span>
+            >La protección y el buen manejo de la información personal de sus afiliados son muy importantes para el Gimnasio Chon's Gym, por cuanto las mismas le permiten atender de mejor manera las necesidades que ellos tienen, así como cumplir con las obligaciones a su cargo. Es por ello que el Software de entrenamiento para etapa productiva ha diseñado políticas y procedimientos que en conjunto con la presente autorización permiten hacer uso de sus datos personales conforme a la ley. Así, lo invitamos a leer cuidadosamente el siguiente texto, mediante el cual autoriza el tratamiento de su información personal.</span>
             <p></p>
             <span
               class="text-xs black--text subheading justify"
-            >1. En relación con mis Datos Personales: Mediante este documento, en mi calidad de titular de la información o representante legal del mismo, autorizo al Gimnasio Chon's Gym a dar tratamiento a mis datos personales para:</span>
+            >1. En relación con mis Datos Personales: Mediante este documento, en mi calidad de titular de la información o representante legal del mismo, autorizo al Software de entrenamiento para etapa productiva  a dar tratamiento a mis datos personales para:</span>
             <p></p>
             <span
               class="text-xs black--text subheading justify"
@@ -182,10 +183,7 @@
               class="text-xs black--text subheading justify"
             >La presente autorización se hace extensiva a quien represente los derechos del Gimnasio Chon's Gym, a quien éste contrate para el ejercicio de los mismos o a quien éste ceda sus derechos, sus obligaciones o su posición contractual a cualquier título, en relación con los productos o servicios de los que soy titular. Así mismo, a las Entidades que forman parte de la Organización y a los terceros con quien el Gimnasio Chon's Gym o esas Entidades establezcan alianzas comerciales, a partir de las cuales se ofrezcan productos o servicios que puedan ser de su interés.</span>
             <p></p>
-            <span
-              class="text-xs black--text subheading justify"
-            >Esta autorización permanecerá vigente, hasta tanto sea revocada y podrá ser revocada en los eventos previstos en la ley, y siempre y cuando no exista ningún tipo de relación con el Gimnasio Chon's Gym o no se encuentre vigente algún producto o servicio derivado de esta autorización.</span>
-            <p></p>
+           
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
@@ -235,7 +233,7 @@ export default {
       show2: false,
       gender: ["M", "F"],
       conditions: false,
-      content: "Bienvenido a chon´s-Gym",
+      content: "Bienvenido a SEEP",
       snackbar: false,
       terminos: false
     };
@@ -260,8 +258,8 @@ export default {
     }
   },
   created() {
+    this.$store.commit('SET_LAYOUT', 'principal-layout');
     this.getUsers();
-    this.$store.commit('SET_LAYOUT', 'principal-layout')
   },
   computed: {
     checkboxErrors() {

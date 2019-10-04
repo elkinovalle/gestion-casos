@@ -56,6 +56,7 @@ export default {
     items: [
       { icon: 'edit', text: 'Preguntas Casos', link: '/Administrador/pregunta' },
       { icon: 'business', text: 'Preguntas Empresas', link: '/Administrador/preguntas-empresas' },
+      { icon: 'close', text: 'Cerrar Sesión', link: '/Cliente/Login' },
     ],
     props: {
       source: String

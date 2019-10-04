@@ -48,7 +48,7 @@
                 </v-flex>
               </v-layout>
             </v-container>
-           <small>Verifique que tidos los datos esten escritos correctamente</small>
+           <small>Verifique que todos los datos esten escritos correctamente</small>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>

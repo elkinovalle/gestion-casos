@@ -16,8 +16,9 @@
         <v-layout row wrap>
           <v-flex d-flex>
             <v-card>
-              <v-card-text class="display-1 texto">
-                  Felicidades acabas de recibir dos ofertas de empleo para realizar 
+              <v-card-title class="display-2 ">Felicidades</v-card-title>
+              <v-card-text class="texto">
+                  Acabas de recibir dos ofertas de empleo para realizar tu contrato de aprendizaje para la etapa productiva 
                </v-card-text>
                
             </v-card>
@@ -27,7 +28,7 @@
                <img :src="require('../../assets/motos.png')" class="spinning" @click="clickPush()">
             </v-flex>
             <v-flex d-flex> 
-              <img :src="require('../../assets/Modelamiento sw.png')" class="spinning" @click="clickPush('/Cliente/mision')">               
+              <img :src="require('../../assets/Modelamiento sw.png')" class="spinning" @click="clickPush('/Cliente/Bienvenido')">               
             </v-flex>
         </v-layout>
       </v-flex>
@@ -61,8 +62,8 @@ import api from "@/plugins/service";
 
 export default {
   created() {
+    this.$store.commit('SET_LAYOUT', 'principal-layout');
     this.getPreguntas();
-    this.$store.commit('SET_LAYOUT', 'principal-layout')
   },
   data: () => ({
     preguntas: [],
@@ -84,10 +85,10 @@ export default {
 }
 .imagen2 {
     width: 100%;
-    height: 50%;
+    height: 100px;
 }
 .texto{
-    font-size: 20px;
+    font-size 25px
 }
  .spinning{ 
    height 250px

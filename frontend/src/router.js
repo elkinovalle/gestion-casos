@@ -10,6 +10,7 @@ import ModuloCasos from './views/Cliente/ModuloCasos.vue'
 import Mision from './views/Cliente/Mision.vue'
 import Inicio from './views/Cliente/inicio.vue'
 import OfertasEmpresas from './views/Cliente/OfertasEmpresas.vue'
+import Bienvenido from './views/Cliente/Bienvenido.vue'
 
 Vue.use(Router)
 
@@ -66,6 +67,11 @@ export default new Router({
       path: '/Cliente/Ofertas-Empresas',
       name: 'Ofertas-Empresas',
       component: OfertasEmpresas
+    },
+    {
+      path: '/Cliente/Bienvenido',
+      name: 'Bienvenido',
+      component: Bienvenido
     },
   ]
 })

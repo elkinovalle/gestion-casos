@@ -31,8 +31,8 @@ import caso1 from "../../componets/caso2";
 import caso0 from "../../componets/caso1";
 export default {
   created() {
+    this.$store.commit('SET_LAYOUT', 'principal-layout');
     this.getPreguntas();
-    this.$store.commit('SET_LAYOUT', 'principal-layout')
   },
   data: () => ({
     preguntas: [],

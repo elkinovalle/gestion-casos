@@ -10,7 +10,7 @@
             <v-text-field v-model="editedItem.NO_EMPRESA"  label="Número de Empresa"></v-text-field>
           </v-flex>
           <v-flex xs12 sm6>
-            <v-combobox v-model="editedItem.correcta" :items="correctaIt" label="Respuesta Correcta"></v-combobox>
+            <v-combobox v-model="editedItem.RESPUESTA" :items="correctaIt" label="Respuesta Correcta"></v-combobox>
           </v-flex>
           <v-flex xs12 sm6>
             <v-textarea v-model="editedItem.Pregunta" box label="Pregunta" clearable ></v-textarea>
@@ -68,8 +68,7 @@
                 <td class="text-xs-left">{{ props.item.A }}</td>
                 <td class="text-xs-left">{{ props.item.B }}</td>
                 <td class="text-xs-left">{{ props.item.C }}</td>
-                <td class="text-xs-left">{{ props.item.contexto }}</td>
-                <td class="text-xs-left">{{ props.item.correcta }}</td>
+                <td class="text-xs-left">{{ props.item.RESPUESTA }}</td>
                 <td class="justify-center layout px-0">
                   <v-btn
                     class="font-weight-black white--text body-2"
@@ -110,7 +109,7 @@ export default {
   },
   data: () => ({
     dialog: false,
-    correcta: '',
+    RESPUESTA: '',
     correctaIt: [
       'A','B','C'
     ],
@@ -127,31 +126,29 @@ export default {
       { text: "Respuesta A", value: "A" },
       { text: "Respuesta B", value: "B" },
       { text: "Respuesta C", value: "C" },
-      { text: "Correcta", value: "correcta" }
+      { text: "Correcta", value: "RESPUESTA" }
     ],
     editedIndex: -1,
     editedItem: {
-      Tema: "",
+      NO_EMPRESA: "",
       Pregunta: "",
       A: "",
       B: "",
       C: "",
-      contexto: "",
-      correcta: ""
+      RESPUESTA: ""
     },
     defaultItem: {
-     Tema: "",
+      NO_EMPRESA: "",
       Pregunta: "",
       A: "",
       B: "",
       C: "",
-      contexto: "",
-      correcta: ""
+      RESPUESTA: ""
     },
   }),
 
   computed: {
-    ...mapState(["preguntas"]),
+    ...mapState(["preguntasReconocimiento"]),
     formTitle() {
       return this.editedIndex === -1 ? "New Item" : "Editar Item";
     }
@@ -164,7 +161,7 @@ export default {
   },
   methods: {
     async getPreguntasReconocimiento() {
-      const { data: preguntas } = await api.get("/pregunta_reconocimiento");
+      const { data: preguntasReconocimiento } = await api.get("/preguntas_reconocimiento");
       this.$store.commit("SET_PREGUNTAS_RECONOCIMIENTO", preguntasReconocimiento);
     },
     resetForm() {
@@ -172,26 +169,25 @@ export default {
     },
     async save() {
       if (this.btnText === "Agregar Pregunta") {
-        const { data: pregunta } = await api.post("/pregunta_reconocimiento", {
-          preguntaNew: {
-            NO_EMPRESA: this.editedItem.Tema,
+        const { data: pregunta } = await api.post("/preguntas_reconocimiento", {
+          preguntas_reconocimientoNew: {
+            NO_EMPRESA: this.editedItem.NO_EMPRESA,
             Pregunta: this.editedItem.Pregunta,
             A: this.editedItem.A,
             B: this.editedItem.B,
             C: this.editedItem.C,
-            contexto: this.editedItem.contexto,
-            correcta: this.editedItem.correcta
+            RESPUESTA: this.editedItem.RESPUESTA
           }
         });
-        let clonPreguntas = [...this.preguntas];
+        let clonPreguntas = [...this.preguntasReconocimiento];
         clonPreguntas.push(pregunta);
-        this.$store.commit("SET_PREGUNTAS", clonPreguntas);
+        this.$store.commit("SET_PREGUNTAS_RECONOCIMIENTO", clonPreguntas);
         this.snackbar = true;
         this.resetForm();
       } else {
         
-        const { data: pregunta } = await api.put(`/pregunta/${this.editedItem.uuid}`, {
-         preguntaUpdate: {
+        const { data: pregunta } = await api.put(`/preguntas_reconocimiento/${this.editedItem.uuid}`, {
+         preguntas_reconocimientoUpdate: {
             Tema: this.editedItem.Tema,
             Pregunta: this.editedItem.Pregunta,
             A: this.editedItem.A,
@@ -201,9 +197,9 @@ export default {
             correcta: this.editedItem.correcta
           }
         });
-         let clonPreguntas = [...this.preguntas]
+         let clonPreguntas = [...this.preguntasReconocimiento]
         clonPreguntas[this.editedIndex] = pregunta
-        this.$store.commit('SET_PREGUNTAS', clonPreguntas)
+        this.$store.commit('SET_PREGUNTAS_RECONOCIMIENTO', clonPreguntas)
         this.btnText = 'Agregar Pregunta'
         this.resetForm()
       }
@@ -213,19 +209,18 @@ export default {
     initialize() {
       this.preguntasReconocimiento = [
         {
-          Tema: "",
-          Pregunta: "",
-          A: "",
-          B: "",
-          C: "",
-          contexto: "",
-          correcta: ""
+         NO_EMPRESA: "",
+         Pregunta: "",
+         A: "",
+         B: "",
+         C: "",
+         RESPUESTA: ""
         }
       ];
     },
     editItem(item) {
       this.btnText = "Actualizar";
-      this.editedIndex = this.preguntas.indexOf(item);
+      this.editedIndex = this.preguntasReconocimiento.indexOf(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
@@ -243,12 +238,12 @@ export default {
       });
       if (sw.value) {
         try {
-          const { data: pregunta } = await api.delete(`/pregunta/${item.uuid}`);
+          const { data: pregunta } = await api.delete(`/preguntas_reconocimiento/${item.uuid}`);
           Swal.fire("Eliminado!", "La pregunta se elimino exitosamente", "success");
-          let clonPreguntas = [...this.preguntas];
+          let clonPreguntas = [...this.preguntasReconocimiento];
           const index = this.preguntas.indexOf(item);
           clonPreguntas.splice(index, 1);
-          this.$store.commit("SET_PREGUNTAS", clonPreguntas);
+          this.$store.commit("SET_PREGUNTAS_RECONOCIMIENTO", clonPreguntas);
         } catch (error) {
           console.error(error);
         }

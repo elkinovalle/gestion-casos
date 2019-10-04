@@ -56,8 +56,8 @@ import api from "@/plugins/service";
 
 export default {
   created() {
+    this.$store.commit('SET_LAYOUT', 'principal-layout');
     this.getPreguntas();
-    this.$store.commit('SET_LAYOUT', 'principal-layout')
   },
   data: () => ({
     preguntas: [],

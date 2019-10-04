@@ -2,8 +2,11 @@
   <div>
     <v-container >
       <v-layout align-center justify-center wrap>
-        <v-flex xs12 sm12 md12>
+        <v-flex xs12 sm12 md10>
           <img :src="iconsecont" class="iconseacont" />
+        </v-flex>
+        <v-flex xs12 md2>
+           <v-btn  class="text tmn" color="blue darken-1" to="">Siguiente</v-btn>
         </v-flex>
         <v-flex xs12 sm6 md6>
           <img :src="seacont" class="seacont" />
@@ -46,7 +49,7 @@ import seacont from "@/assets/seacont.jpg";
 import iconsecont from "@/assets/Modelamiento sw.png";
 export default {
   created() {
-    this.$store.commit('SET_LAYOUT', 'principal-layout')
+    this.$store.commit('SET_LAYOUT', 'principal-layout');
   },
   data: () => ({
     seacont: seacont,
@@ -82,5 +85,9 @@ export default {
 }
 .color{
     color: antiquewhite
+}
+.tmn{
+width: 120px !important; 
+height: 50px;
 }
 </style>
