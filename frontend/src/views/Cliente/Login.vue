@@ -1,6 +1,6 @@
 <template>
 <div class="found">
-    <v-content>
+    <!-- <v-content> -->
       <v-container>
         <h1 class="text-xs-center font-weight-bold white--text display-3">Iniciar sesión</h1>
         <v-layout wrap align-center justify-center>
@@ -32,7 +32,7 @@
                  <v-flex xs12 order-lg2>
                   <v-dialog v-model="dialogPassword" persistent max-width="600px">
         <template v-slot:activator="{ on }">
-          <v-card flat class="carta1">
+          <v-card flat >
         <v-btn dark v-on="on" color="black body-1" flat>¿Olvidó su contraseña?</v-btn>
           </v-card>
         </template>
@@ -71,7 +71,7 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </v-content>
+    <!-- </v-content> -->
   </div>
 </template>
 <script>
@@ -150,7 +150,5 @@ h1 {
 .contenido{
   padding 30px
 }
-.carta1{
-  padding-left 270px
-}
+
 </style>

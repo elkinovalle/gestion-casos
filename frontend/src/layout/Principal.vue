@@ -212,7 +212,7 @@ export default {
   }
   img{
     width: 150px !important
-    height: 60px
+    height: 100%
   }
   .desplegable{
     z-index: 900000

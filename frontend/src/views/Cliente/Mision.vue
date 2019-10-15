@@ -6,7 +6,7 @@
           <img :src="iconsecont" class="iconseacont" />
         </v-flex>
         <v-flex xs12 md2>
-           <v-btn  class="text tmn" color="blue darken-1" to="">Siguiente</v-btn>
+           <v-btn  class="text tmn" color="blue darken-1" to="/Cliente/infoRealizar-Preguntas">Siguiente<v-icon right class="material-icons">chevron_right</v-icon></v-btn>
         </v-flex>
         <v-flex xs12 sm6 md6>
           <img :src="seacont" class="seacont" />
@@ -87,7 +87,6 @@ export default {
     color: antiquewhite
 }
 .tmn{
-width: 120px !important; 
 height: 50px;
 }
 </style>

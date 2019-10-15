@@ -1,14 +1,14 @@
-<template>
+<template >
   <div class="fondo">
     <v-container>
       <v-layout>
-        <v-flex xs12 sm6 md3>
-          <img src="../../assets/Slide1_Pic1_636256342167862599.png" class="imagen" alt />
+        <v-flex xs12 sm6 md4>
+          <img src="../../assets/boss.png" class="imagen" alt />
         </v-flex>
         <v-flex xs12 sm6 md6 lg>
-          <component :is="`caso${this.cont}`"></component>
-          <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn>
-          <!-- <v-card>
+          <!-- <component :is="`caso${this.cont}`"></component>
+          <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn> -->
+          <v-card>
       <v-card-title class="display-1">¿{{this.preguntas[0].Pregunta}}?</v-card-title>
       <v-radio-group class="group" v-model="Rcorrecta">
         <v-radio :label="`${this.preguntas[0].A}`" color="blue" value="A"></v-radio>
@@ -18,7 +18,7 @@
       <v-card-actions>
         <v-btn color="blue darken-4 "  @click="contador">Siguiente</v-btn>
       </v-card-actions>
-    </v-card> -->
+          </v-card>
         </v-flex>
       </v-layout>
     </v-container>
@@ -27,45 +27,48 @@
 
 <script>
 import api from "@/plugins/service";
-import caso1 from "../../componets/caso2";
-import caso2 from "../../componets/caso3";
-import caso0 from "../../componets/caso1";
 export default {
   created() {
-    this.$store.commit('SET_LAYOUT', 'principal-layout');
-    this.getPreguntas();
+    this.$store.commit("SET_LAYOUT", "principal-layout");
+    this.getPreguntasEmpresas();
   },
   data: () => ({
     preguntas: [],
-    caso0: caso0,
-    caso1: caso1,
-    caso2: caso2,
-    cont: 0
+    cont: 0,
+    Rcorrecta: ""
   }),
   methods: {
-    async getPreguntas() {
-      const { data: preguntas } = await api.get("/pregunta");
+    async getPreguntasEmpresas() {
+      const { data: preguntas } = await api.get("/preguntas_reconocimiento");
       this.preguntas = preguntas;
+      var rand = preguntas[Math.floor(Math.random() * preguntas.length)];
+      let randas = Object.assign({}, rand);
+      console.log(randas.Pregunta);
+      console.log(randas.A);
+      console.log(this.preguntas[0].Pregunta);
+
+      //       ${this.preguntas[1].C}`
+      //       ${this.preguntas[1].A}`
+      //       ${this.preguntas[1].B}`
     },
-    
-    contador(){
-     this.cont++;
-     console.log(this.cont);
-      if (this.Rcorrecta === this.rand.correcta) {
+    ff(rand) {
+      return (rand = this.preguntas[
+        Math.floor(Math.random() * this.preguntas.length)
+      ]);
+    },
+    contador() {
+     if (this.Rcorrecta === this.preguntas[0].RESPUESTA) {
        console.log("Es correcta");
-        console.log(this.rand.RESPUESTA);
+        console.log(this.preguntas[0].RESPUESTA);
        
      } else {
         console.log("incorrecta");
-        console.log(this.rand.correcta);
+       
      }
-     
+      
     }
   },
   components: {
-    caso0,
-    caso1,
-    caso2
   }
 };
 </script>
@@ -81,5 +84,4 @@ export default {
       background-image: url('../../assets/questions.jpg') !important;
       margin-top: -14px
   }
-
 </style>

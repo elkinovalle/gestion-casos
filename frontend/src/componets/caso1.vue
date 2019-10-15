@@ -1,11 +1,11 @@
 <template>
   <div>
     <v-card>
-      <v-card-title class="display-1">¿{{this.preguntas[0].Pregunta}}?</v-card-title>
+      <v-card-title class="display-1">¿{{this.rand.Pregunta}}?</v-card-title>
       <v-radio-group class="group" v-model="Rcorrecta">
-        <v-radio :label="`${this.preguntas[0].A}`" color="blue" value="A"></v-radio>
-        <v-radio :label="`${this.preguntas[0].B}`" color="blue" value="B"></v-radio>
-        <v-radio :label="`${this.preguntas[0].C}`" color="blue" value="C"></v-radio>
+        <v-radio :label="`${this.rand.A}`" color="blue" value="A"></v-radio>
+        <v-radio :label="`${this.rand.B}`" color="blue" value="B"></v-radio>
+        <v-radio :label="`${this.rand.C}`" color="blue" value="C"></v-radio>
       </v-radio-group>
       <v-card-actions>
         <br>
@@ -22,27 +22,20 @@ export default {
     this.getPreguntas();
   },
   data: () => ({
-    preguntas: []
+    preguntas: [],
+    rand: "",
+    Rcorrecta: ""
   }),
   methods: {
     async getPreguntas() {
       const { data: preguntas } = await api.get("/pregunta");
       this.preguntas = preguntas;
-      var rand = preguntas[Math.floor(Math.random() * preguntas.length)];
-      let randas = Object.assign({}, rand);
-      console.log(randas.Pregunta);
-      console.log(randas.A);
-      console.log(this.preguntas[0].Pregunta);
-
-      //       ${this.preguntas[1].C}`
-      //       ${this.preguntas[1].A}`
-      //       ${this.preguntas[1].B}`
+      this.rand = preguntas[Math.floor(Math.random() * preguntas.length)];
+       console.log(this.rand.Pregunta);
+      console.log(this.rand.A);
+      console.log(this.rand.B);
+      console.log(this.rand.C);
     },
-    ff(rand) {
-      return (rand = this.preguntas[
-        Math.floor(Math.random() * this.preguntas.length)
-      ]);
-    }
   }
 };
 </script>

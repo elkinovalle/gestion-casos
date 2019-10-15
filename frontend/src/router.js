@@ -11,6 +11,9 @@ import Mision from './views/Cliente/Mision.vue'
 import Inicio from './views/Cliente/inicio.vue'
 import OfertasEmpresas from './views/Cliente/OfertasEmpresas.vue'
 import Bienvenido from './views/Cliente/Bienvenido.vue'
+import infoRealizarPreguntas from './views/Cliente/infoRealizarPreguntas.vue'
+import PreguntasEmpresasCliente from './views/Cliente/PreguntasEmpresasCliente.vue'
+import seleccionarCaso from './views/Cliente/seleccionarCaso.vue'
 
 Vue.use(Router)
 
@@ -72,6 +75,21 @@ export default new Router({
       path: '/Cliente/Bienvenido',
       name: 'Bienvenido',
       component: Bienvenido
+    },
+    {
+      path: '/Cliente/infoRealizar-Preguntas',
+      name: 'infoRealizar-Preguntas',
+      component: infoRealizarPreguntas
+    },
+    {
+      path: '/Cliente/preguntas-empresas-cliente',
+      name: 'preguntas-empresas-cliente',
+      component: PreguntasEmpresasCliente
+    },
+    {
+      path: '/Cliente/seleccionar-caso',
+      name: 'seleccionar-caso',
+      component: seleccionarCaso
     },
   ]
 })

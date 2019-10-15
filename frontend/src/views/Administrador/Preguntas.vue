@@ -82,7 +82,7 @@
                     class="font-weight-black white--text body-2"
                     color="red darken-4"
                     @click="deleteItem(props.item)"
-                  >Eliminar</v-btn>
+                  >Eliminar <v-icon class="material-icons">delete</v-icon></v-btn>
                 </td>
               </template>
               <v-alert

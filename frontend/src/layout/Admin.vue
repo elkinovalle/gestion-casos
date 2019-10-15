@@ -104,34 +104,4 @@ export default {
     background-color:#1E88E5 !important
   }
 </style>
-  span.title{
-    font-size 40px !important
-    color white
-  }
-  .v-navigation-drawer > .v-list:not(.v-list--dense) .v-list__tile {
-    font-size 18px !important
-    height 57.7px
-    color white
-  }
-  div.v-content{
-    background-color white !important
-  }
-  .container.fill-height {
-   background-color white
-  }
-  .act{
-    background-color white !important
-  }
-  .v-icon{
-    color white
-  }
-  .theme--light.v-icon {
-    color: white;
-  }
-  .v-toolbar__content > *:first-child.v-btn--icon, .v-toolbar__extension > *:first-child.v-btn--icon {
-      color: white;
-  }
-  .lista{
-    background-color grey !important
-  }
-</style>
+  
