@@ -9,11 +9,11 @@
           <!-- <component :is="`caso${this.cont}`"></component>
           <v-btn id="0" class="text" color="blue darken-4 " @click="contador">Siguiente</v-btn> -->
           <v-card>
-      <v-card-title class="display-1">¿{{this.preguntas[0].Pregunta}}?</v-card-title>
+      <v-card-title class="display-1">¿{{this.preguntas[this.cont].Pregunta}}?</v-card-title>
       <v-radio-group class="group" v-model="Rcorrecta">
-        <v-radio :label="`${this.preguntas[0].A}`" color="blue" value="A"></v-radio>
-        <v-radio :label="`${this.preguntas[0].B}`" color="blue" value="B"></v-radio>
-        <v-radio :label="`${this.preguntas[0].C}`" color="blue" value="C"></v-radio>
+        <v-radio :label="`${this.preguntas[this.cont].A}`" color="blue" value="A"></v-radio>
+        <v-radio :label="`${this.preguntas[this.cont].B}`" color="blue" value="B"></v-radio>
+        <v-radio :label="`${this.preguntas[this.cont].C}`" color="blue" value="C"></v-radio>
       </v-radio-group>
       <v-card-actions>
         <v-btn color="blue darken-4 "  @click="contador">Siguiente</v-btn>
@@ -35,35 +35,35 @@ export default {
   data: () => ({
     preguntas: [],
     cont: 0,
-    Rcorrecta: ""
+    Rcorrecta: "",
+    rand: ""
   }),
   methods: {
     async getPreguntasEmpresas() {
       const { data: preguntas } = await api.get("/preguntas_reconocimiento");
       this.preguntas = preguntas;
-      var rand = preguntas[Math.floor(Math.random() * preguntas.length)];
-      let randas = Object.assign({}, rand);
-      console.log(randas.Pregunta);
-      console.log(randas.A);
-      console.log(this.preguntas[0].Pregunta);
+      this.rand = preguntas[Math.floor(Math.random() * preguntas.length)];
 
       //       ${this.preguntas[1].C}`
       //       ${this.preguntas[1].A}`
       //       ${this.preguntas[1].B}`
     },
-    ff(rand) {
-      return (rand = this.preguntas[
-        Math.floor(Math.random() * this.preguntas.length)
-      ]);
+    clickPush (value) {
+      this.$router.push(value)
     },
     contador() {
-     if (this.Rcorrecta === this.preguntas[0].RESPUESTA) {
+     this.cont++;
+     console.log(this.cont);
+     if (this.Rcorrecta === this.preguntas[this.cont-1].RESPUESTA) {
        console.log("Es correcta");
-        console.log(this.preguntas[0].RESPUESTA);
+        console.log(this.preguntas[this.cont].RESPUESTA);
        
      } else {
         console.log("incorrecta");
        
+     }
+     if (this.cont){
+       this.$router.push('/Cliente/seleccionar-caso')
      }
       
     }

@@ -22,12 +22,32 @@ function setupPregunta(preguntaModel) {
     const cond = { where : { uuid } }
     return preguntaModel.findOne(cond)
   }
+  function presupuesto(){
+    const cond = { where : { Tema: "PRESUPUESTO" } }
+    return preguntaModel.findAll(cond)
+  }
+  function contabilidad(){
+    const cond = { where : { Tema: "CONTAB. Y FINANZAS" } }
+    return preguntaModel.findAll(cond)
+  }
+  function proyectos(){
+    const cond = { where : { Tema: "PROYECTOS" } }
+    return preguntaModel.findAll(cond)
+  }
+  function servicio(){
+    const cond = { where : { Tema: "SERV. AL CLIENTE" } }
+    return preguntaModel.findAll(cond)
+  }
   return {
     createPregunta,
     updatePregunta,
     deletePregunta,
     findPregunta,
-    findPreguntaUuid
+    findPreguntaUuid,
+    presupuesto,
+    contabilidad,
+    proyectos,
+    servicio
   }
 }
 

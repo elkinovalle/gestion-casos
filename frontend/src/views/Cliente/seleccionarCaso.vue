@@ -11,16 +11,16 @@
               <img src="../../assets/logo seep hd.png" class="imagen2" />
             </v-flex>
             <v-flex xs12 sm3 md6 >
-              <v-btn class="btn" color="blue darken-1">Presupuesto</v-btn>
+              <v-btn class="btn" color="blue darken-1" @click="clickPush('/Cliente/preguntas-presupuesto')">Presupuesto</v-btn>
             </v-flex>
             <v-flex xs12 sm3 md6>
-              <v-btn class="btn" color="blue darken-1">Proyectos</v-btn>
+              <v-btn class="btn" color="blue darken-1" @click="clickPush('/Cliente/preguntas-proyecto')">Proyectos</v-btn>
             </v-flex>
             <v-flex xs12 sm3 md6>
-              <v-btn class="btn" color="blue darken-1">Servicio al Cliente</v-btn>
+              <v-btn class="btn" color="blue darken-1" @click="clickPush('/Cliente/preguntas-servicios')">Servicio al Cliente</v-btn>
             </v-flex>
             <v-flex xs12 sm3 md6>
-              <v-btn class="btn" color="blue darken-1" >Contabilidad y Finanzas</v-btn>
+              <v-btn class="btn" color="blue darken-1" @click="clickPush('/Cliente/preguntas-contabilidad')">Contabilidad y Finanzas</v-btn>
             </v-flex>
           </v-layout>
         </v-flex>
@@ -30,10 +30,26 @@
 </template>
 
 <script>
+import api from "@/plugins/service";
 export default {
   created (){
     this.$store.commit('SET_LAYOUT', 'principal-layout');
-  }
+    this.getPreguntas();
+  },
+  data: () => ({
+    preguntas: [],
+    re: [],
+    cont: 0
+  }),
+   methods: {
+    async getPreguntas() {
+      const { data: preguntas } = await api.get("/pregunta");
+      this.preguntas = preguntas;
+    },
+    clickPush (value) {
+      this.$router.push(value)
+    },
+   }
 };
 </script>
 

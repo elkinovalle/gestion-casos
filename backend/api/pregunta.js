@@ -48,6 +48,47 @@ router.get('/', async function(req, res, next){
     next(err)
   }
 })
+// prueba
+router.get('/presupuesto', async function(req, res, next){
+  try {
+    const { Pregunta } = await db()
+    const result = await Pregunta.presupuesto()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/proyecto', async function(req, res, next){
+  try {
+    const { Pregunta } = await db()
+    const result = await Pregunta.proyectos()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/servicio', async function(req, res, next){
+  try {
+    const { Pregunta } = await db()
+    const result = await Pregunta.servicio()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/contabilidad', async function(req, res, next){
+  try {
+    const { Pregunta } = await db()
+    const result = await Pregunta.contabilidad()
+    res.send(result)
+  } catch (err) {
+    next(err)
+  }
+})
+//fin
 router.get('/:uuid', async function(req, res, next){
   try {
     const { uuid } = req.params

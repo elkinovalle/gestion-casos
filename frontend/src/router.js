@@ -14,6 +14,10 @@ import Bienvenido from './views/Cliente/Bienvenido.vue'
 import infoRealizarPreguntas from './views/Cliente/infoRealizarPreguntas.vue'
 import PreguntasEmpresasCliente from './views/Cliente/PreguntasEmpresasCliente.vue'
 import seleccionarCaso from './views/Cliente/seleccionarCaso.vue'
+import preguntasPresupuesto from './views/Cliente/preguntasPresupuesto.vue'
+import preguntasProyecto from './views/Cliente/preguntasProyecto.vue'
+import preguntasServicio from './views/Cliente/preguntasServicio.vue'
+import preguntasContabilidad from './views/Cliente/preguntasContabilidad.vue'
 
 Vue.use(Router)
 
@@ -90,6 +94,26 @@ export default new Router({
       path: '/Cliente/seleccionar-caso',
       name: 'seleccionar-caso',
       component: seleccionarCaso
+    },
+    {
+      path: '/Cliente/preguntas-presupuesto',
+      name: 'preguntas-presupuesto',
+      component: preguntasPresupuesto
+    },
+    {
+      path: '/Cliente/preguntas-proyecto',
+      name: 'preguntas-proyecto',
+      component: preguntasProyecto
+    },
+    {
+      path: '/Cliente/preguntas-contabilidad',
+      name: 'preguntas-contabilidad',
+      component: preguntasContabilidad
+    },
+    {
+      path: '/Cliente/preguntas-servicios',
+      name: 'preguntas-servicios',
+      component: preguntasServicio
     },
   ]
 })
